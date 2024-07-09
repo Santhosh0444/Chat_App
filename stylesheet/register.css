@@ -1,0 +1,203 @@
+
+.container {
+    /* background: var(--bgColor); */
+    padding: 10px 15px;
+    width: 500px;
+    box-shadow: 0 0 8px #999;
+    backdrop-filter: blur(6px);
+}
+
+.container h3 {
+    font-weight: 400;
+    padding: 10px 2px;
+}
+
+.feildBox {
+    flex-wrap: wrap;
+    gap: 8px 5px;
+}
+
+.feildSet {
+    display: flex;
+    width: 100%;
+    position: relative;
+}
+
+.feildSet:nth-child(1),
+.feildSet:nth-child(2) {
+    width: 40%;
+    flex-grow: 1;
+}
+
+.feildSet input,
+.feildSet textarea,
+.feildSet select {
+    width: 100%;
+    height: 40px;
+    padding: 5px 10px 0;
+    font-size: 16px;
+    background: #cfcfcf;
+    border-radius: 5px;
+    border: 2px solid transparent;
+    transition: border-color .3s ease;
+}
+
+.feildSet span {
+    position: absolute;
+    pointer-events: none;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.feildSet input,
+.feildSet textarea,
+.feildSet select {
+
+    &:focus,
+    &:valid {
+        border-color: var(--bgColor);
+    }
+}
+
+.feildSet input,
+.feildSet textarea {
+
+    &:focus~span,
+    &:valid~span {
+        font-size: 10px;
+        transform: translateY(-20px);
+        color: var(--bgColor);
+        transition: color .3s ease, transform .2s ease, font-size .3s ease;
+    }
+}
+
+.dbImage {
+    background: #cfcfcf;
+    width: 100%;
+    height: 100px;
+    position: relative;
+    border-radius: 5px;
+    justify-content: center;
+    cursor: pointer; 
+    border: 2px solid transparent;
+    transition: border-color .3s ease;
+}
+
+.dbImage.active {
+    color: var(--bgColor);
+    border-color: var(--bgColor);
+}
+
+.dbImage.active img {
+    border-color: var(--bgColor);
+}
+
+.dbImage:hover {
+    border-color: var(--bgColor);
+    color: var(--bgColor);
+}
+
+.dbImage:hover img {
+    border-color: var(--bgColor);
+}
+
+.dbImage span {
+    margin-left: 5px;
+}
+
+.dbImage input {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.dbImage img {
+    width: 50px;
+    height: 50px;
+    pointer-events: none;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    transition: border-color .3s ease;
+}
+
+.showPass {
+    margin: 10px 0;
+    width: 100%;
+    cursor: pointer;
+    justify-content: start;
+}
+
+.showPass:hover {
+    color: var(--bgColor);
+}
+
+.showPass input{
+    margin: 0 5px;
+    width: 20px;
+    height: 20px;
+}
+
+.showPass::after {
+    content: 'Show Password';
+    pointer-events: none;
+}
+
+.links {
+    padding: 5px 2px;
+}
+
+.links a:hover{
+    text-decoration: underline;
+}
+
+.btn {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.btn button {
+    width: 200px;
+    height: 40px;
+    background: var(--bgColor);
+    font-size: 18px;
+    color: #fff;
+    border-radius: 40px;
+    transition: width .6s ease, background .3s ease;
+    position: relative;
+    &:hover {
+        background: #cb8016;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .container{
+        width: 90%;
+    }
+    .feildSet:nth-child(1), .feildSet:nth-child(2) {
+        width: 100%;
+    }
+}
+
+.btn button.buffer {
+    width: 40px;
+}
+
+.btn button.buffer span {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    border-top-color: red;
+    animation: rotate .8s ease infinite;
+}
+
+@keyframes rotate {
+    0% {
+        transform: translate(-50%, -50%) rotate(0);
+    }
+    100%{
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}

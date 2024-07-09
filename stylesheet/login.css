@@ -1,0 +1,31 @@
+
+.feildSet:nth-child(1), .feildSet:nth-child(2) {
+    width: 100%;
+}
+
+.links {
+    justify-content: space-between;
+    width: 100%;
+}
+
+.feildSet .userDb {
+    width: 30px;
+    height: 30px;
+    background: transparent;
+    right: -8px;
+    left: unset;
+    border-radius: 50%;
+}
+
+.feildSet input[type="text"] {
+    padding-right: 40px;
+}
+
+@media screen and (max-width: 500px) {
+    .links {
+        flex-direction: column-reverse;
+        gap: 10px;
+        align-items: start;
+        font-size: 15px;
+    }
+}

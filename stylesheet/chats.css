@@ -1,0 +1,420 @@
+body {
+    background: #363434;
+}
+
+nav.menuBar {
+    float: left;
+    height: 100vh;
+    flex-direction: column;
+    padding-inline: 10px;
+    gap: 8px;
+}
+
+nav.menuBar button {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    background: #000;
+    flex-direction: column;
+    gap: 1px;
+    color: #fff;
+    border-radius: 5px;
+    transition: background .3s ease;
+
+    &::before {
+        content: '';
+        display: flex;
+        width: 28px;
+        height: 28px;
+        background: #fff;
+        mask-size: cover;
+        transition: background .3s ease;
+    }
+
+    &:hover {
+        background: var(--bgColor);
+
+        &::before {
+            background: #141111;
+        }
+
+        &::after {
+            color: #141111;
+        }
+    }
+
+    &::after {
+        content: attr(data-value);
+        font-size: 9px;
+        transition: color .3s ease;
+    }
+
+    &:is(.setting) {
+        &::before {
+            mask-image: var(--settings);
+            transition: transform .4s ease !important;
+        }
+
+        &:hover::before {
+            transform: rotate(260deg);
+        }
+    }
+
+    &:is(.add)::before {
+        mask-image: var(--plus);
+    }
+
+    &:is(.search)::before {
+        mask-image: var(--search);
+    }
+
+    &:is(.group)::before {
+        mask-image: var(--group);
+    }
+
+    &:is(.user)::before {
+        mask-image: var(--user);
+    }
+}
+
+aside.people {
+    float: left;
+    width: 400px;
+    /* background: red; */
+    height: calc(100vh - 10px);
+    position: relative;
+    padding: 5px;
+}
+
+header.userSection {
+    background: rgb(12, 12, 12);
+    justify-content: space-between;
+    height: 65px;
+    border-radius: 5px;
+    padding-inline: 8px;
+}
+
+header.userSection .userDetails {
+    gap: 8px;
+    padding-left: 4px;
+}
+
+header.userSection .userDetails a.Profile img {
+    width: 48px;
+    height: 48px;
+    /* background: red; */
+    object-fit: fill;
+    display: block;
+    border-radius: 50%;
+}
+
+header.userSection .userDetails a.details {
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    gap: 2px;
+
+    &>span.name {
+        font-size: 19px;
+        font-weight: 500;
+    }
+
+    &>span.status {
+        font-size: 12px;
+    }
+}
+
+header.userSection .headerBtn button {
+    width: 30px;
+    height: 30px;
+
+    &::before {
+        content: '';
+        display: block;
+        width: 25px;
+        height: 25px;
+        mask-image: var(--sun);
+        mask-size: cover;
+        mask-repeat: no-repeat;
+        background: #fff;
+        transition: background .2s ease;
+    }
+
+    &:hover::before {
+        background: var(--bgColor);
+    }
+}
+
+
+/* all person style */
+
+aside.people section.allPeople {
+    margin-block: 5px;
+    max-height: calc(100vh - 81px);
+    overflow-y: auto;
+}
+
+
+/* message person */
+section.allPeople {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+section.allPeople .person {
+    display: flex;
+    height: 60px;
+    flex-shrink: 0;
+    overflow: hidden;
+    padding-inline: 10px;
+    border-radius: 5px;
+    align-items: center;
+    gap: 13px;
+    background: #141111;
+    justify-content: space-between;
+    /* transition: background .5s ease; */
+
+    &:hover {
+        background: var(--bgColor);
+    }
+}
+
+section.allPeople .person a.Profile,
+section.persondetails .person a.Profile {
+    position: relative;
+    & > span.status {
+        position: absolute;
+        width: 18px;
+        height: 18px;
+        background: #000;
+        right: 0;
+        bottom: 5px;
+        border-radius: 50%;
+        &::before {
+            content: '';
+            display: block;
+            width: 14px;
+            height: 14px;
+            background: green;
+            border-radius: 50%;
+        }
+    }
+}
+
+section.allPeople .person a.Profile img,
+.mainSection .persondetails .person a.Profile img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+section.allPeople .person a.details,
+.mainSection .person a.details {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #fff;
+    gap: 3px;
+
+    &>span.personName {
+        font-size: 19px;
+        font-weight: 500;
+    }
+
+    &>span.lastmess {
+        font-size: 14px;
+    }
+}
+
+
+/* message body */
+
+.mainSection {
+    float: left;
+    width: calc(100% - 490px);
+    margin: 5px;
+    /* background: green; */
+    display: flex;
+    height: calc(100vh - 10px);
+    flex-direction: column;
+}
+
+.mainSection .persondetails {
+    background: #141111;
+    display: flex;
+    height: 65px;
+    padding-inline: 15px;
+    align-items: center;
+    border-radius: 5px;
+    justify-content: space-between;
+
+    &>.person {
+        gap: 10px;
+    }
+}
+
+.mainSection .persondetails .moreBtn button {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    flex-direction: column;
+    gap: 2px;
+
+    &>span,
+    &::before,
+    &::after {
+        width: 6px;
+        height: 5px;
+        border-radius: 5px;
+        background: #fff;
+        transition: width .5s ease, background .3s ease;
+    }
+
+    &::before,
+    &::after {
+        content: '';
+        width: 10px;
+    }
+
+    &:hover>span {
+        width: 10px;
+        background: var(--bgColor);
+    }
+
+    &:hover::before,
+    &:hover::after {
+        width: 6px;
+        background: var(--bgColor);
+    }
+}
+
+.mainSection .messageBody {
+    margin-top: 5px;
+    flex-grow: 1;
+    padding: 5px 15px;
+    position: relative;
+    overflow-y: auto;
+}
+
+button.mask-style {
+    width: 25px;
+    height: 25px;
+    background: #000;
+    mask-image: var(--trash);
+    display: none;
+    &:hover{
+        background: red;
+    }
+}
+
+.userMess,
+.othersMess {
+    display: flex;
+    gap: 12px;
+    justify-content: end;
+    align-items: end;
+    margin-bottom: 5px;
+    &:hover button.mask-style {
+        display: block;
+    }
+}
+
+.othersMess {
+    justify-content: start;
+    flex-direction: row-reverse;
+}
+
+.userMess img,
+.othersMess img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.userMess p,
+.othersMess p {
+    background: #141111;
+    padding: 8px 10px;
+    word-break: break-all;
+    border-radius: 6px;
+    position: relative;
+    max-width: 60%;
+    line-height: 22px;
+    color: #fff;
+
+    &::before {
+        content: '';
+        width: 10px;
+        height: 10px;
+        background: #141111;
+        display: block;
+        position: absolute;
+        pointer-events: none;
+        right: 0;
+        bottom: 10px;
+        transform: translate(50%, -50%) rotate(45deg);
+    }
+}
+
+.othersMess p::before {
+    right: initial;
+    left: 0;
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+
+.postSection {
+    gap: 3px;
+    padding-inline: 5px;
+    margin-top: 5px;
+}
+
+.messageInput {
+    width: 100%;
+    background: #141111;
+    border-radius: 20px;
+    height: 35px;
+    padding: 5px 10px;
+    position: relative;
+    display: flex;
+}
+
+button.mesPost {
+    width: 42px;
+    height: 42px;
+    background: #141111;
+    flex-shrink: 0;
+    border-radius: 50%;
+
+    &::before {
+        content: '';
+        width: 30px;
+        display: block;
+        height: 30px;
+        mask-image: var(--telegram);
+        background: #fff;
+        mask-position: center;
+        mask-size: cover;
+        mask-repeat: no-repeat;
+    }
+
+    &:hover {
+        background: var(--bgColor);
+
+        &::before {
+            background: #141111;
+        }
+    }
+}
+
+.messageInput textarea {
+    width: 100%;
+    color: #fff;
+    font-size: 18px;
+    resize: none;
+    padding: 7px 0;
+    font-family: 'Poppins', sans-serif;
+}
